@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.py[cod]
+
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+.env
+.env.*
+
+data/raw/
+data/processed/
+B题数据集/
+outputs/*
+!outputs/.gitkeep
