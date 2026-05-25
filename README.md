@@ -44,15 +44,6 @@ GitHub 地址：
 git@github.com:MatheartOs/Mathematical-Contest-In-Modeling.git
 ```
 
-提交或同步前建议运行：
-
-```powershell
-.\.venv\Scripts\python.exe math_test.py
-.\.venv\Scripts\python.exe verify_science_stack.py
-.\.venv\Scripts\python.exe science_complex_test.py
-.\.venv\Scripts\python.exe -m pip check
-```
-
 ## 已包含的第三方科学计算包
 
 | 包名 | 用途 |
@@ -70,33 +61,7 @@ git@github.com:MatheartOs/Mathematical-Contest-In-Modeling.git
 | jupyterlab | Notebook 实验环境，适合探索性建模 |
 | notebook | 传统 Jupyter Notebook 支持 |
 
-## 当前测试脚本
-
-`math_test.py` 会执行以下检查：
-
-- 二次方程求根
-- 数值积分
-- 高斯消元求解线性方程组
-- 线性系统残差验证
-- 幂迭代估计矩阵主特征值
-- 复数多项式计算
-
-运行成功时会看到类似输出：
-
-```text
-Python math environment OK
-Linear system solution: [1.0, 2.0, -1.0, 1.0]
-Linear system residual norm: 0.00e+00
-Dominant eigenvalue estimate: 14.07347775
-```
-
-`verify_science_stack.py` 用于检查第三方科学计算包是否已经安装成功。运行成功时会列出每个包的版本；如果有缺失，会明确打印缺失包名。
-
-`science_complex_test.py` 是综合科学计算测试，会实际调用 NumPy、SciPy、Pandas、Matplotlib、Seaborn、Scikit-learn、Statsmodels、Sympy 和 NetworkX，覆盖线性代数、优化、积分、统计回归、机器学习、符号计算、图论和绘图输出。运行后会生成 `outputs/science_complex_test.png`。
-
-## B 题项目入口
-
-本次比赛已确定选择 B 题。代码目录已新增 `src/mcm_b/` 和 `scripts/`，用于多源异构文件识别、主题归类和人工复核优先级建模。
+代码目录已新增 `src/mcm_b/` 和 `scripts/`，用于多源异构文件识别、主题归类和人工复核优先级建模。
 
 默认命令只做轻量小样本，不会全量解析几千个文件：
 
@@ -105,7 +70,7 @@ Dominant eigenvalue estimate: 14.07347775
 .\.venv\Scripts\python.exe scripts\run_b_pipeline_sample.py
 ```
 
-项目内放置完整 `B题数据集/` 后，可运行正式链路：
+项目内放置完整数据集后，可运行正式链路：
 
 ```powershell
 .\.venv\Scripts\python.exe scripts\run_b_cleaning.py --output-dir outputs\b_problem\cleaning_v2
@@ -113,13 +78,6 @@ Dominant eigenvalue estimate: 14.07347775
 ```
 
 清洗链路会生成 `document_index.csv`、`document_blocks.jsonl`、`parse_log.csv`、`manual_check_list.csv` 等标准清洗产物。正式链路会基于 `document_index.csv` 生成 `RESULT_SUMMARY.md`、问题 1/2/3 的 CSV 表和 PNG 图；`B题数据集/` 与 `outputs/` 均不提交到 git。
-
-交接和协作说明见：
-
-- `docs/B_PROBLEM_NOTES.md`
-- `docs/ALGORITHM_SKETCH.md`
-- `docs/AGENT_HANDOFF.md`
-- `docs/GIT_WORKFLOW.md`
 
 ## 协作建议
 
