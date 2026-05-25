@@ -1,17 +1,4 @@
-# Mathematical Contest In Modeling
-
-本仓库是 2026 年第十一届数维杯大学生数学建模挑战赛（春季赛）B 题项目代码与结果说明入口。当前题目为“智能办公场景下多源异构文件识别与治理优化”，最新链路已经从早期环境测试脚本升级为：
-
-```text
-原始 B 题数据集
-  -> 全量多源文件清洗与 PaddleOCR
-  -> 问题一：历史文件主题体系归纳
-  -> 问题二：新流入文件迁移归属与评价
-  -> 问题三：人工复核优先级与资源约束优化
-  -> final_results 五类论文交付表
-```
-
-当前项目事实源为 `docs/PROJECT_MAIN.md`；论文撰写材料见 `docs/problem1论文描述.md`、`docs/problem2论文描述.md`、`docs/problem3论文描述.md`、`docs/数学符号定义与说明.md` 和 `docs/附录与支撑材料.md`。
+# File-Identification-and-Optimization-Project-Based-on-PaddleOCR
 
 ## 环境准备
 
@@ -51,16 +38,6 @@ CPU 环境可改为：
 $env:PADDLEOCR_DEVICE='cpu'
 ```
 
-## 数据与目录
-
-原始赛题数据放在仓库根目录：
-
-```text
-B题数据集/
-```
-
-该目录、`outputs/`、`models/`、`PP-OCRv5/` 均已在 `.gitignore` 中忽略，不提交到 git。
-
 核心代码目录：
 
 ```text
@@ -80,7 +57,7 @@ scripts/
 └── recalibrate_cleaning_review.py
 ```
 
-## 最新完整运行链路
+## 完整运行链路
 
 在仓库根目录按顺序运行：
 
@@ -117,7 +94,7 @@ $env:PADDLEOCR_DEVICE='gpu:0'
   --output-dir outputs\b_problem\final_results
 ```
 
-如果已经存在最新 `outputs/b_problem/cleaning_ocr_full/`，可以跳过第一步，直接重跑问题一、问题二、问题三和最终交付汇总。
+如果已经存在最新 `outputs/b_problem/cleaning_ocr_full/`，可以跳过第一步。
 
 ## 各阶段输出
 
@@ -174,17 +151,6 @@ outputs/b_problem/problem3_optimization/
 └── problem3_*.png / problem3_*_plot_data.csv
 ```
 
-最终论文交付表：
-
-```text
-outputs/b_problem/final_results/
-├── data_preprocessing_statistics.csv
-├── problem1_classification_result_table.csv
-├── problem2_assignment_evaluation_table.csv
-├── problem3_review_priority_table.csv
-├── resource_scenario_comparison_table.csv
-├── final_deliverables_report.md
-└── data_preprocessing_file_type_distribution.png
 ```
 
 ## 当前模型摘要
@@ -215,27 +181,3 @@ outputs/b_problem/final_results/
 .\.venv\Scripts\python.exe scripts\recalibrate_cleaning_review.py `
   --cleaning-dir outputs\b_problem\cleaning_ocr_full
 ```
-
-## 文档索引
-
-| 文档 | 用途 |
-| --- | --- |
-| `docs/PROJECT_MAIN.md` | 项目主记录、最新命令、阶段结果和 TODO |
-| `docs/题目.md` | 题面整理 |
-| `docs/解析.md` | 建模建议与结果表要求 |
-| `docs/多源异构文件数据清洗流程说明文档.md` | 数据清洗流程说明 |
-| `docs/数据清洗环节论文参考说明.md` | 清洗章节论文素材 |
-| `docs/problem1论文描述.md` | 问题一论文素材 |
-| `docs/problem2论文描述.md` | 问题二论文素材 |
-| `docs/problem3论文描述.md` | 问题三论文素材 |
-| `docs/问题二求解.md` | 问题二正文式求解说明 |
-| `docs/问题三求解.md` | 问题三正文式求解说明 |
-| `docs/数学符号定义与说明.md` | 全文数学符号统一说明 |
-| `docs/附录与支撑材料.md` | 附录、源程序和结果文件清单 |
-
-## 协作约定
-
-- 重要算法、参数、结果或命令变更后，优先同步 `docs/PROJECT_MAIN.md`。
-- 原始数据、OCR 模型和输出结果不提交到 git。
-- 论文手优先使用 `outputs/b_problem/final_results/` 下的五类核心表；需要细粒度分析时再查看问题一、二、三各自目录。
-- 每张 PNG 图都配套同名 `.png.csv` 和 `_plot_data.csv`，便于论文中重新作图。
